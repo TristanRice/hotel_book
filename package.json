@@ -1,0 +1,30 @@
+{
+  "name": "hotel_booking_system",
+  "version": "1.0.0",
+  "description": "A booking system for hotels",
+  "main": "index.js",
+  "scripts": {
+    "test": "node test.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/TristanRice/hotel_book.git"
+  },
+  "author": "TristanRice",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/TristanRice/hotel_book/issues"
+  },
+  "homepage": "https://github.com/TristanRice/hotel_book#readme",
+  "dependencies": {
+    "body-parser": "^1.18.3",
+    "cookie-parser": "^1.4.3",
+    "express": "^4.16.4",
+    "express-session": "^1.15.6",
+    "express-validator": "^5.3.1",
+    "mongoose": "^5.4.7",
+    "nodemon": "^1.18.9",
+    "password-hash": "^1.2.2",
+    "pug": "^2.0.3"
+  }
+}
