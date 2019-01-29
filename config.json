@@ -4,5 +4,5 @@
     "database_host": "127.0.0.1",
     "database_port": 27107,
     "database_name": "hotel_booking_system",
-    "database_url": "mongodb://localhost:27107/hotel_booking_system"
+    "database_url": "mongodb://127.0.0.1:27017/hotel_booking_system?gssapiServiceName=mongodb"
 }

@@ -1,14 +1,14 @@
 const express      = require("express")
     , user         = require("../../models/user")
     , {
-        check
-        validationResult
+        check,
+        validationResult,
         body
     }              = require("express-validator/check")
     , constants    = require("../helpers/constants/constants")
     , mongoose     = require("mongoose")
     , error_msgs   = require("../helpers/errors/error_messages")
-    , check_unique = require("../helpers/database_check_unique")
+    , check_unique = require("../helpers/database/check_unique")
     , config       = require("../../config.json")
     , router       = express.Router( );
 
@@ -38,8 +38,8 @@ router.post("/", [
 
     check("password")
         .isLength({
-            min: constans.PASSWORD_MIN_LENGTH,
-            max: constans.PASSWORD_MAX_LENGTH
+            min: constants.PASSWORD_MIN_LENGTH,
+            max: constants.PASSWORD_MAX_LENGTH
         })
         .withMessage(error_msgs.PASSWORD_LENGTH_ERROR_MESSAGE)
         .custom((value, { req }) => {
@@ -52,8 +52,7 @@ router.post("/", [
         })
         .trim( ).escape( )
 
-]
-
+],
 (req, res) => {
     let errors = validationResult(req).array( );
     if (errors)
@@ -77,7 +76,7 @@ router.post("/", [
 });
 
 router.get("/", (req, res) => {
-
+    return res.render("auth/register")
 });
 
 module.exports = router;
