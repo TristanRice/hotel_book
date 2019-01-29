@@ -59,8 +59,13 @@
   text-decoration: none;
 }
 
+.error p {
+    color: #FF9494;
+    text-decoration: none;
+}
+
 .hidden {
-  
+
 }
 
 .form .register-form {
@@ -115,5 +120,5 @@ body {
   background: linear-gradient(to left, #76b852, #8DC26F);
   font-family: "Roboto", sans-serif;
   -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;      
+  -moz-osx-font-smoothing: grayscale;
 }

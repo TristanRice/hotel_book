@@ -1,29 +1,42 @@
 html
+	
 	head
 		title
-			| #{title}
-
-		block includes
+			| Logon / Register
+			
+		block stylesheets
+			link(rel="stylesheet", href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css")
 			link(rel="stylesheet", href="/css/auth/style.css")
 
 	body
 		div(class="login-page")
 			div(class="form")
-				form(class="login-form")
-					input(type="text", placeholder="username", id="username")
+				form(class="login-form", method="post")
+					input(type="text", placeholder="username", id="username", name="username", class="toots",
+						title="Your username must be between 3 and 20 characters", required="true")
 
 					block register
-						input(type="text", placeholder="email", id="email")
+						input(type="email", placeholder="email", id="email", name="email", class="toots",
+							title="You must enter a valid email")
 
-						input(type="text", placeholder="password", id="password1")
-
-					input(type="text", placeholder="password", id="password2")
+					input(type="password", placeholder="password", id="password2" name="password2", class="toots",
+						title="Your password must contain at least 10 letters, one number, and one lowercase and capital letter", required="true")
+					
+					block secondPassword
+						input(type="password", placeholder="password", id="password1", name="password", class="toots",
+							title="passwords must match", required="true")
+						
+					if errors
+						p(style="color: #FF9494; font-size: 16px;")=errors[0].msg
 
 					button
 						| login
-		block scripts
-			script(src="https://code.jquery.com/jquery-3.3.1.min.js", integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo", crossorigin="anonymous")
 
-			script(src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js",
-				   integrity="sha384-wHAiFfRlMFy6i5SRaxvfOCifBUQy1xHdJ/yoi7FRNXMRBu5WHdZYu1hA6ZOblgut",
-				   crossorigin="anonymous")
+		block scripts
+			script(src="https://code.jquery.com/jquery-3.3.1.min.js", crossorigin="anonymous")
+			
+			script(src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js", crossorigin="anonymous")
+			
+			script(src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js")
+			
+			script(src="/scripts/auth/main.js", type="text/javascript")

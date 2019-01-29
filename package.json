@@ -23,6 +23,7 @@
     "express-session": "^1.15.6",
     "express-validator": "^5.3.1",
     "mongoose": "^5.4.7",
+    "mongoose-unique-validator": "^2.0.2",
     "nodemon": "^1.18.9",
     "password-hash": "^1.2.2",
     "pug": "^2.0.3"

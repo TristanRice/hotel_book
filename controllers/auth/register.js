@@ -1,5 +1,5 @@
 const express      = require("express")
-    , user         = require("../../models/user")
+    , User         = require("../../models/user")
     , {
         check,
         validationResult,
@@ -22,26 +22,14 @@ router.post("/", [
             max: constants.USERNAME_MAX_LENGTH
         })
         .withMessage(error_msgs.USERNAME_LENGTH_ERROR_MESSAGE)
-        .custom((value, { req }) => {
-            check_unique(value, "username", constants.USERNAME_ALREADY_EXISTS);
-        })
         .trim( ).escape( ),
 
     check("email")
         .isEmail()
         .withMessage(error_msgs.VALID_EMAIL_MESSAGE)
-        .custom((value, { req }) => {
-            check_unique(value, "email", constants.EMAIL_ALREADY_EXISTS);
-        })
-        .normalizeEmail( )
-        .trim( ).escape( ),
+        .normalizeEmail( ),
 
     check("password")
-        .isLength({
-            min: constants.PASSWORD_MIN_LENGTH,
-            max: constants.PASSWORD_MAX_LENGTH
-        })
-        .withMessage(error_msgs.PASSWORD_LENGTH_ERROR_MESSAGE)
         .custom((value, { req }) => {
 
             if (value !== req.body.password2)
@@ -49,14 +37,18 @@ router.post("/", [
 
             if (!constants.PASSWORD_REGEX_MUST_MATCH.exec(value))
                 throw new Error(error_msgs.PASSWORD_MESSAGE_MATCH_REGEX);
+
+            return true;
         })
         .trim( ).escape( )
 
 ],
 (req, res) => {
     let errors = validationResult(req).array( );
-    if (errors)
-        return res.render("login");
+    if (errors.length)
+        return res.render("auth/register", {
+            errors: errors
+        });
 
     let user = new User({
         username: req.body.username,
@@ -65,14 +57,24 @@ router.post("/", [
     });
 
     user.save((err) => {
-        if (err)
-            throw err;
+        uniqueErrors = [];
+
+        if (err.errors.username)
+            uniqueErrors.push({msg: "That username is already in use"});
+
+        if (err.errors.email)
+            uniqueErrors.push({msg: "That email is already in use"});
+
+        if (uniqueErrors.length)
+            return res.render("auth/register", {
+                errors: uniqueErrors
+            });
+
+        req.session.current_user = user;
+        req.session.save( );
+
+        res.redirect("/");
     });
-
-    req.session.current_user = user;
-    req.session.save( );
-
-    res.redirect("/");
 });
 
 router.get("/", (req, res) => {

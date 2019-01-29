@@ -1,23 +1,24 @@
 const mongoose     = require("mongoose")
     , default_json = require("./helpers/defaults/metadata")
+    , uniqueValidator = require("mongoose-unique-validator")
     , Schema       = mongoose.Schema;
 
 const UserSchema = new Schema({
     username: {
         type: String,
-        required: true
+        required: true,
+        unique: true
     },
 
     email: {
         type: String,
         required: true,
-        unique: true,
+        unique: true
     },
 
     password: {
         type: String,
         required: true,
-        unique: true
     },
 
     admin: {
@@ -29,6 +30,7 @@ const UserSchema = new Schema({
     metadata: default_json
 });
 
+UserSchema.plugin(uniqueValidator);
 
 UserSchema.pre("save", function(next) {
     let current_date = new Date( );

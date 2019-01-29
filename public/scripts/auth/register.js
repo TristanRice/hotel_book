@@ -1,25 +1,28 @@
 $(function( ) {
-	$("#username").tooltip({"trigger":"hover", "title": "Your username must be between 3 and 20 characters"});
-	$("#enail").tooltip({"trigger": "hover", "title": "You must enter a valid email"});
-	$("#password1").tooltip({"trigger": "hover", 
-			"title":"Your password must contain at least 10 letters, one number, and one lowercase and capital letter"})
-
 	$("#username").on("blur", ( ) => {
+		//when the user leaves the username input box, this event listener will
+		//fire, and it will check if the username is available or not
+
 		if (!$("#username").val( ))
+			//if the user hasn't entered anything, then we shouldn't try and see
+			//if it is available
 			return;
 
 		$.ajax({
 			type: "POST",
 			url: "/api/frontend/checkusername",
-			data: JSON.stringify($("#username").val( )),
+			data: {
+				"username": $("#username").val( )
+			},
 			dataType: "json",
 			success: (result) => {
-				result = JSON.parse(result);
-				if (result.taken)	
+				console.log(result);
+				if (result.taken)
 					console.log("taken");
 				else
 					console.log("Not taken");
 			}
-		})
-	})
+		});
+	});
+
 });

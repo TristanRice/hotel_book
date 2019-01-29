@@ -1,7 +1,15 @@
-module.exports = (value, item, error_message) => {
+const user = require("../../../models/user")
+
+module.exports = (value, item, error_message, req) => {
     value = req.body[item];
-    user.findOne({item: value}, function(err, model) {
-        if (model || err)
-            throw new Error(constants.USERNAME_ALREADY_EXISTS);
-    });
+    try{
+        user.find({item: value}, function(err, model) {
+            if (model || err)
+                (a) => {
+                    throw new Error("aaa");
+                }
+        });
+    } catch (e) {
+        console.log("here");
+    }
 }

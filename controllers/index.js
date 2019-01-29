@@ -1,6 +1,7 @@
 const express     = require("express")
     , error_pages = require("./helpers/errors/error_pages.js")
     , auth        = require("./auth")
+    , api         = require("./api")
     , router      = express.Router( );
 
 router.get("/", (req, res) => {
@@ -8,6 +9,7 @@ router.get("/", (req, res) => {
 });
 
 router.use("/", auth);
+router.use("/api", api);
 
 //at this point, if the page hasn't be rendered above, we will send a 404 error
 router.get("*", (req, res) => {
