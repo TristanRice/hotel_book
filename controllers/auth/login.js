@@ -1,5 +1,6 @@
 const express = require("express")
     , User    = require("../../models/user")
+    , bcrypt  = require("bcryptjs")
     , router  = express.Router( );
 
 router.get("/", (req, res) => {
@@ -7,11 +8,13 @@ router.get("/", (req, res) => {
 });
 
 router.post("/", (req, res) => {
-    username = req.body.username;
-    password = req.body.password;
+    const username = req.body.username;
+    const password = req.body.password2;
 
-    User.findOne({username: username, password: password}, (err, User) => {
-        if (!User.length)
+
+    User.findOne({username: username}, (err, User) => {
+
+        if (!User || !bcrypt.compareSync(password, User.password))
             return res.render("auth/login");
 
         req.session.current_user = User;

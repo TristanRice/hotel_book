@@ -1,7 +1,8 @@
-const mongoose     = require("mongoose")
-    , default_json = require("./helpers/defaults/metadata")
+const mongoose        = require("mongoose")
+    , default_json    = require("./helpers/defaults/metadata")
     , uniqueValidator = require("mongoose-unique-validator")
-    , Schema       = mongoose.Schema;
+    , bcrypt          = require("bcryptjs")
+    , Schema          = mongoose.Schema;
 
 const UserSchema = new Schema({
     username: {
@@ -29,6 +30,14 @@ const UserSchema = new Schema({
 
     metadata: default_json
 });
+
+UserSchema.password_verify = function(password) {
+    return bcrypt.compareSync(password, this.password);
+}
+
+UserSchema.methods.hash_password = function( ) {
+    this.password = bcrypt.hashSync(this.password, 10);
+}
 
 UserSchema.plugin(uniqueValidator);
 

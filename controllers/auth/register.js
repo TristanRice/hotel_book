@@ -55,14 +55,15 @@ router.post("/", [
         email: req.body.email,
         password: req.body.password
     });
+    user.hash_password( );
 
     user.save((err) => {
         uniqueErrors = [];
 
-        if (err.errors.username)
+        if (err && err.errors.username)
             uniqueErrors.push({msg: "That username is already in use"});
 
-        if (err.errors.email)
+        if (err && err.errors.email)
             uniqueErrors.push({msg: "That email is already in use"});
 
         if (uniqueErrors.length)

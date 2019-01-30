@@ -1,9 +1,39 @@
-@import url(https://fonts.googleapis.com/css?family=Roboto:300);
+@import url('https://fonts.googleapis.com/css?family=Roboto:300');
+@import url('https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.css');
+
+.input-icon {
+  position: absolute;
+  right: 10px;
+  font-size: 1.5em;
+  top: calc(40% - 0.5em); /* Keep icon in center of input, regardless of the input height */
+}
+
+.loading {
+    color: #66CCCC;
+}
+
+.reject {
+    font-size: 1.7em;
+    color: #A63232;
+}
+
+.tick {
+    font-size: 1.7em;
+    color: #2E8B57
+}
+
+.input-wrapper{
+  position: relative;
+}
 
 .login-page {
   width: 360px;
   padding: 8% 0 0;
   margin: auto;
+}
+
+.toots {
+    background-color: #f2f2f2;
 }
 
 .form {
@@ -20,7 +50,6 @@
 .form input {
   font-family: "Roboto", sans-serif;
   outline: 0;
-  background: #f2f2f2;
   width: 100%;
   border: 0;
   margin: 0 0 15px;

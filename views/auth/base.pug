@@ -12,24 +12,34 @@ html
 		div(class="login-page")
 			div(class="form")
 				form(class="login-form", method="post")
-					input(type="text", placeholder="username", id="username", name="username", class="toots",
-						title="Your username must be between 3 and 20 characters", required="true")
+					div(class="input-wrapper")
 
+						input(type="text", placeholder="username", id="username", name="username", class="toots",
+							title="Your username must be between 3 and 20 characters", required="true")
+						label(for="username", class="", id="username_icon", value="c")
+					
 					block register
-						input(type="email", placeholder="email", id="email", name="email", class="toots",
-							title="You must enter a valid email")
+						div(class="input-wrapper")
+							input(type="email", placeholder="email", id="email", name="email", class="toots",
+								title="You must enter a valid email")
+							label(for="email", class="", id="email_icon", value="c")
 
-					input(type="password", placeholder="password", id="password2" name="password2", class="toots",
-						title="Your password must contain at least 10 letters, one number, and one lowercase and capital letter", required="true")
+					div(class="input-wrapper")
+						input(type="password", placeholder="password", id="password2" name="password2", class="toots",
+							title="Your password must contain at least 10 letters, one number, and one lowercase and capital letter", required="true")
+						label(for="password2", class="", id="password2_icon", value="c")
 					
 					block secondPassword
-						input(type="password", placeholder="password", id="password1", name="password", class="toots",
-							title="passwords must match", required="true")
-						
-					if errors
-						p(style="color: #FF9494; font-size: 16px;")=errors[0].msg
+						div(class="input-wrapper")
+							input(type="password", placeholder="password", id="password1", name="password", class="toots",
+								title="passwords must match", required="true")
+							label(for="password1", class="", id="password1_icon", value="c")
 
-					button
+					div(id="errors")
+						if errors
+							p(style="color: #FF9494; font-size: 16px;")=errors[0].msg
+
+					button(id="submitButton", disabled="true")
 						| login
 
 		block scripts
