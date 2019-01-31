@@ -5,59 +5,90 @@ html
 			link(rel="stylesheet", href="/css/style.css")
 			link(rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css")
 			link(rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css")
+			link(rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.css")
+
+			link(rel="style")
 
 			title
 				| #{title}
 
 	body
 		block navbar
-			ul(id="dropdown1", class="dropdown-content")
-					if user
-						li
-							a(href="#")
-								| Your account
+			header
+				ul(id="dropdown1", class="dropdown-content")
+						if user
+							
+							li
+								a(href="#")
+									| Your account
 
-						li
-							a(href="#")
-								| Settings
+							li
+								a(href="#")
+									| Settings
 
-						li
-							a(href="#")
-								| Logout
-					else
-						li
-							a(href="#")
-								| Login
+							li
+								a(href="#")
+									| Logout
+						else
+							
+							li
+								a(href="#")
+									| Login
 
-						li
-							a(href="#")
-								| Register
+							li
+								a(href="#")
+									| Register
 
-			nav(id="main_nav")
-				div(class="nav-wrapper")
-					a(href="#" class="brand-logo")
-						| Book a hotel
+				nav(id="main_nav" class="light-blue lighten-1")
+					div(class="nav-wrapper")
+						a(href="#" class="brand-logo", style="margin-left: 15px;")
+							| Book a hotel
 
-					ul(class="right hide-on-med-and-down")
-						li
-							a(href="#", style="font-size: 2rem")
-								i(class="fas fa-hotel material-icons left")
-								| Find hotel
+						ul(class="right hide-on-med-and-down")
+							li
+								a(href="#", class="navbar_main_a")
+									i(class="fas fa-hotel material-icons left")
+									| Find hotel
+									
+
+							li
+								a(class="dropdown-trigger navbar_main_a", data-target="dropdown1", href="#!")
+									i(class="fas fa-user material-icons left")
+									| User 
+
+							li
+								a(href="#", class="navbar_main_a")
+									i(class="fas fa-search material-icons left")
+									| Quick Search
 								
+		block main
+			 
+		block footer
+			footer(class="page-footer orange", style="position: fixed; bottom: 0; left: 0; width: 100%;")
+				div(class="container")
+					div(class="row")
+						div(class="col 16 s12")
+							h5(class="white-text")
+								| Footer content
+							p(class="grey-text text-lighten-4")
+								| You can use rows and columns here
+						div(class="col 14 offset-12 s12")
+							h5(class="white-text")
+								| Links
+							ul
+								
+								li
+									a(class="grey-text text-lighten-3", href="https://www.github.com/TristanRice/hotel_book")
+										| Source code
+				
+				div(class="footer-copyright")
+					div(class="container")
+						| 2014 Copyright
+						a(class="grey-text text-lighten-4 right", href="#!")
+							| More Links
 
-						li
-							a(class="dropdown-trigger", data-target="dropdown1", href="#!", style="font-size: 2rem;")
-								i(class="fas fa-user material-icons left")
-								| User 
-								i(class="fas fa-caret-down", style="font-size: 30px;")
-
-						li
-							a(href="#", style="font-size: 2rem;")
-								i(class="fas fa-search material-icons left")
-								| Quick Search
-
-	block scripts
-		script(src="https://code.jquery.com/jquery-3.3.1.slim.min.js")
-		script(src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js")
-		script(src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js")
-		script(src="/scripts/index/index.js")
+		block scripts
+			script(src="https://cdn.jsdelivr.net/jquery/latest/jquery.min.js")
+			script(src="https://cdn.jsdelivr.net/momentjs/latest/moment.min.js")
+			script(src="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.min.js")
+			script(src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js")

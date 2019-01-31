@@ -1,1 +1,36 @@
 extends base.pug
+        
+block main
+    div(class="container")
+        h1(class="header center teal-text text-lighten-2")
+            | Book a room
+        
+        input(class="input_search_box", id="search_input"
+            placeholder="City, town or village")
+                                
+        div(class="input-field col s12")
+            div(class="select_flexbox")
+
+                select(class="browser-default", name="people_amount")
+                    option(value="" disabled select)
+                        | Choose your Option
+                        
+                    option(value="1")
+                        | 1 Person
+                                            
+                    option(value="2")
+                        | 2 People
+                                            
+                    option(value="3")
+                        | 3 People
+                    
+                    option(value="4")
+                        | 4+ people
+                
+                input(type="text", placeholder="choose your date", 
+                    style="margin-left: 20px;", id="datepicker")
+                
+                script.
+
+block append scripts
+    script(src="/scripts/index/index.js")

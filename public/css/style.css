@@ -1,29 +1,33 @@
-.navbar_main {
-	width: 100%;
-	height: 38px;
-	background-color: #0b98de;
+/*
+This is needed in order for the footer to stick to the bottom
+*/
+body {
+	display: flex;
+	flex-direction: column;
+
+	min-height: 100vh;
 }
 
-.navbar_main a {
-	display: block;
-	float: left;
-	
-	font-size: 9px;
-	font-family: sans-serif;
-	color: white;
-
-	background-color: #17b0cf;
-	border: 1px solid #000;
-
-	padding-top: 20px;
-	padding-right: 10px;
-	padding-bottom: 10px;
-	padding-left: 10px;
-
-	text-decoration: none;
+main {
+	flex: 1 0 auto;
 }
 
-.navbar_main a:hover {
+.main_datepicker {
+	font-size: 2rem;
 
+	margin-left: 20px;
+	margin-right: 20px;
 }
 
+.select_flexbox {
+	display: flex;
+}
+
+.select_flexbox_child {
+	margin-left: 5px;
+	margin-right: 5px;
+}
+
+.input_search_box {
+	padding: 30px;
+}
