@@ -1,0 +1,63 @@
+html
+
+	block head
+		head
+			link(rel="stylesheet", href="/css/style.css")
+			link(rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css")
+			link(rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css")
+
+			title
+				| #{title}
+
+	body
+		block navbar
+			ul(id="dropdown1", class="dropdown-content")
+					if user
+						li
+							a(href="#")
+								| Your account
+
+						li
+							a(href="#")
+								| Settings
+
+						li
+							a(href="#")
+								| Logout
+					else
+						li
+							a(href="#")
+								| Login
+
+						li
+							a(href="#")
+								| Register
+
+			nav(id="main_nav")
+				div(class="nav-wrapper")
+					a(href="#" class="brand-logo")
+						| Book a hotel
+
+					ul(class="right hide-on-med-and-down")
+						li
+							a(href="#", style="font-size: 2rem")
+								i(class="fas fa-hotel material-icons left")
+								| Find hotel
+								
+
+						li
+							a(class="dropdown-trigger", data-target="dropdown1", href="#!", style="font-size: 2rem;")
+								i(class="fas fa-user material-icons left")
+								| User 
+								i(class="fas fa-caret-down", style="font-size: 30px;")
+
+						li
+							a(href="#", style="font-size: 2rem;")
+								i(class="fas fa-search material-icons left")
+								| Quick Search
+
+	block scripts
+		script(src="https://code.jquery.com/jquery-3.3.1.slim.min.js")
+		script(src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js")
+		script(src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js")
+		script(src="/scripts/index/index.js")

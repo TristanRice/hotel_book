@@ -4,7 +4,8 @@
   "description": "A booking system for hotels",
   "main": "index.js",
   "scripts": {
-    "test": "node test.js"
+    "test": "node test.js",
+    "dev_lin": "node node_modules/nodemon/bin/nodemon.js"
   },
   "repository": {
     "type": "git",
