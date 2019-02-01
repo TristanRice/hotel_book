@@ -27,12 +27,14 @@ const HotelSchema = new Schema({
         }
     },
 
-    image: {
-        type: String, //path to the image
-        required: false,
-        unique: true, //I don't want to have duplicate image names
-        extension: String
-    },
+    images: [
+        {
+            type: String, //path to the image
+            required: false,
+            unique: true, //I don't want to have duplicate image names
+            extension: String
+        }
+    ],
 
     /*
     The user can choose to join as either a normal user a hotel owner
@@ -44,6 +46,12 @@ const HotelSchema = new Schema({
         required: false, //they shouldn't have to put a description in if they don't want to
         unique: false
     },
+
+    name: {
+        type: String,
+        required: true,
+        unique: true
+    }
 
     rating: {
         average_star_rating: {

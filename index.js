@@ -24,6 +24,8 @@ app.use(session({
 }))
 
 app.use(express.static("./public"));
+console.log(__dirname+"/node_modules/lightpick");
+app.use(express.static(__dirname+"/node_modules/lightpick"))
 
 app.use(router);
 

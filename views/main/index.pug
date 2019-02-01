@@ -12,25 +12,28 @@ block main
             div(class="select_flexbox")
 
                 select(class="browser-default", name="people_amount")
-                    option(value="" disabled select)
-                        | Choose your Option
-                        
+                    option(value="" disabled selected)
+                        | Number of beds
+
                     option(value="1")
-                        | 1 Person
-                                            
+                        | 1
+
                     option(value="2")
-                        | 2 People
-                                            
+                        | 2
+
                     option(value="3")
-                        | 3 People
-                    
+                        | 3
+
                     option(value="4")
-                        | 4+ people
+                        | 4+
                 
                 input(type="text", placeholder="choose your date", 
                     style="margin-left: 20px;", id="datepicker")
                 
-                script.
+                button(class="btn waves-effect waves-light", type="submit", name="action", id="submit_button", style="width: 40%;")
+                    | Submit
+                    i(class="material-icons right fas fa-angle-double-right")
+
 
 block append scripts
     script(src="/scripts/index/index.js")

@@ -14,8 +14,14 @@ router.post("/", (req, res) => {
 
     User.findOne({username: username}, (err, User) => {
 
-        if (!User || !bcrypt.compareSync(password, User.password))
-            return res.render("auth/login");
+        console.log(User);
+
+        if (!bcrypt.compareSync(password, User.password)) {
+            console.log("here");
+            return res.render("auth/login", {
+                errors: "Wrong username and/or password"
+            });
+        }
 
         req.session.current_user = User;
         req.session.save( );

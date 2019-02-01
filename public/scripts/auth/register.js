@@ -25,16 +25,6 @@ $(function( ) {
 		});
 	}
 
-	addError = (id) => {
-		$("#"+id).addClass("fa fa-times input-icon reject");
-		$("#submitButton").prop("disabled", true);
-	}
-
-	addSuccess = (id) => {
-		$("#"+id).addClass("fa fa-times input-icon reject");
-		$("#submitButton").prop("disabled", false);
-	}
-
 	$("#username").on("input", ( ) => {
 		$("#username_icon").removeClass( );
 	})
@@ -109,7 +99,6 @@ $(function( ) {
 			return;
 
 		if (password && !REGEX.exec(password)) {
-			addError("password2_icon");
 			return;
 		}
 		$("#password2_icon").addClass("fa fa-check input-icon tick");

@@ -5,6 +5,7 @@ const express     = require("express")
     , router      = express.Router( );
 
 router.get("/", (req, res) => {
+	console.log(req.session.current_user);
     res.render("main/index");
 });
 

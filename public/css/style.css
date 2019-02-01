@@ -31,3 +31,7 @@ main {
 .input_search_box {
 	padding: 30px;
 }
+
+.ui-datepicker {
+	font-size: 0.0001rem;
+}
