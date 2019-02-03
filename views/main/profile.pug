@@ -1,0 +1,142 @@
+extends base
+
+block append main
+    div(class="section no-pad-bot", id="index-banner")
+        div(class="container")
+            div(class="hidden", id="descriptor")
+                h1(class="header center orange-text")
+                    | Your profile
+                div(class="row center")
+                    h5(class="header col s12 light")
+                        | On this page you can manage your profile and add hotels
+
+            div(class="", id="add_hotel_1")
+                div(id="descriptor")
+                    h1(class="header center orange-text")
+                        | Add a hotel
+
+                    div(class="row center")
+                        h5(class="header col s12 light")
+                            | Complete the form to add your hotel
+                div(class="row")
+                    div(class="col s12")
+                        div(class="row")
+                            div(class="input-field col s6")
+                                input(placeholder="Name", id="hotel_name", type="text", class="validate", required="true")
+                                label(for="hotel_name")
+                                    | Name
+
+                            div(class="input-field col s6")
+                                input(placeholder="Phone number", id="hotel_phone_numer", type="text", class="validate", required="true")
+                                label(for="hotel_phone_numer")
+                                    | Phone number
+
+                        div(class="row")
+                            div(class="input-field col s4")
+                                input(placeholder="Country", id="hotel_country", type="text", class="validate", required="true")
+                                label(for="hotel_country")
+                                    | Country
+
+                            div(class="input-field col s4")
+                                input(placeholder="City", id="hotel_city", type="text", class="validate", required="true")
+                                label(for="hotel_city")
+                                    | City
+
+                            div(class="input-field col s4")
+                                input(placeholder="Postcode", id="hotel_postcode", type="text", class="validate", required="true")
+                                label(for="hotel_postcode")
+                                    | Postcode
+
+                        div(class="row")
+                            div(class="input-field col s10")
+                                input(placeholder="Full address", id="hotel_full_address", type="text", class="validate", required="true")
+                                label(for="hotel_full_address")
+                                    | Full hotel address
+
+                            div(class="input-field col s2")
+                                a(class="waves-effect waves-light btn", id="submit_1", style="width: 100%;")
+                                    | Submit 
+
+            div(class="hidden", id="add_hotel_2")
+                div(id="descriptor")
+                    h1(class="header center orange-text")
+                        | Add a hotel
+
+                    div(class="row center")
+                        h5(class="header col s12 light")
+                            | Complete the form to add your hotel
+
+                div(class="row")
+                    div(class="col s6")
+                        label(for="hotel_website")
+                            | Website (optional)
+                        input(placeholder="Website", id="hotel_website", type="text", class="validate", required="true")
+                    div(class="col s6")
+                        label(for="hotel_social")
+                            | Other social media links (Separated by commas)
+                        input(placeholder="Other links", id="hotel_social", type="text", class="validate", required="True")
+                            
+                    div(class="input-field col s12")
+                        textarea(id="hotel_description", class="materialize-textarea validate")
+                        label(for="hotel_description")
+                            | Description (max 500 characters)
+                            
+                div(class="row")
+                    div(class="col s12")
+                        a(class="waves-effect waves-light btn", id="submit_2", style="width: 100%;")
+                            | Submit 
+
+
+            div(class="hidden", id="add_hotel_3")
+                div(id="descriptor")
+                    h1(class="header center orange-text")
+                        | Configure rooms
+
+                    div(class="row center")
+                        h5(class="header col s12 light")
+                            | Choose how many rooms that you have
+
+                div(class="row")
+                    div(class="col s12")
+                        a(id="add_room_group", class="waves-effect waves-light btn", style="width: 100%")
+                            | Add a room group
+                div(id="room_configure")
+
+    div(class="container")
+        div(class="section")
+            div(class="row")
+                div(class="col s12 m4")
+                    a(href="#add_hotel")
+                        div(class="icon-block", id="add_hotel")
+                            h2(class="center light-blue-text")
+                                i(class="material-icons fas fa-hotel")
+                            h5(class="center")
+                                | Add a hotel
+
+                            p(class="light")
+                                | If you are a hotel owner, click here to add your hotel to our database
+
+                div(class="col s12 m4")
+                    a(href="#review_hotel")
+                        div(class="icon-block", id="review_hotel")
+                            h2(class="center light-blue-text")
+                                i(class="material-icons fas fa-users")
+                            h5(class="center")
+                                | Review a hotel
+
+                            p(class="light")
+                                | If you are looking to write a review for a hotel that you stayed at recently, click here.
+
+                div(class="col s12 m4")
+                    a(href="#user_settings")
+                        div(class="icon-block", id="user_settings")
+                            h2(class="center light-blue-text")
+                                i(class="material-icons fas fa-cogs")
+                            h5(class="center")
+                                | Settings
+                        
+                            p(class="light")
+                                | Click here to change your settings, such as your email or your username
+
+    block append scripts
+        script(src="/scripts/profile/index.js")

@@ -6,7 +6,7 @@ html
 			link(rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css")
 			link(rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css")
 			link(rel="stylesheet", href="/css/style.css")
-			link(rel="stylesheet", href="css_/lightpick.css")
+			link(rel="stylesheet", href="/css/lightpick.css")
 
 			title
 				| #{title}
@@ -63,18 +63,7 @@ html
 		block main
 			 
 		block footer
-			footer(class="page-footer orange", style="position: fixed; bottom: 0; left: 0; width: 100%;")
-				div(class="container")
-					div(class="row")
-						div(class="col 14 offset-12 s12")
-							h5(class="white-text")
-								| Links
-							ul
-								
-								li
-									a(class="grey-text text-lighten-3", href="https://www.github.com/TristanRice/hotel_book")
-										| Source code
-				
+			footer(class="page-footer orange", style="position: fixed; bottom: 0; left: 0; width: 100%; z-index: 100")
 				div(class="footer-copyright")
 					div(class="container")
 						| 2014 Copyright
@@ -85,4 +74,4 @@ html
 			script(src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js")
 			script(src="https://cdn.jsdelivr.net/jquery/latest/jquery.min.js")
 			script(src="https://cdn.jsdelivr.net/momentjs/latest/moment.min.js")
-			script(src="/js/lightpick.js")
+			script(src="/lightpick.js")

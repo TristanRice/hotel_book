@@ -2,11 +2,16 @@ const mongoose        = require("mongoose")
     , default_json    = require("./helpers/defaults/metadata")
     , uniqueValidator = require("mongoose-unique-validator")
     , User            = require("./user")
-    , Schema = mongoose.Schema;
+    , Schema          = mongoose.Schema;
 
 const HotelSchema = new Schema({
 
     location: {
+        country: {
+            type: String,
+            required: false,
+            unique: false
+        },
 
         city: {
             type: String,
@@ -51,15 +56,9 @@ const HotelSchema = new Schema({
         type: String,
         required: true,
         unique: true
-    }
+    },
 
     rating: {
-        average_star_rating: {
-            type: Integer,
-            default: 0;
-            unique: false
-        },
-
         /*
         For this to work I will not save each rating and the calculate the average
         after the fact, but I will save the average rating, and the amount of ratings
@@ -73,11 +72,82 @@ const HotelSchema = new Schema({
 
         nr = ((ar*nr)+cr)/nr+1
         */
+        average_star_rating: {
+            type: Integer,
+            default: 0;
+            unique: false
+        },
 
         number_of_raters: {
             type: Integer,
             default: 0,
             unique: false
+        }
+    },
+
+    reviews: [
+        {
+            title: String,
+            content: String,
+        }
+    ],
+
+    rooms: [
+        {
+            size: {
+                type: Integer,
+                default: 2
+            },
+
+            price: {
+                type: Integer,
+                required: true,
+            },
+
+            /*
+            Booked and taken are both different.
+            */
+            booked: {
+                is_booked: {
+                    type: Boolean,
+                    default: false
+                },
+
+                booked_from: {
+                    type: Date,
+                },
+
+                booked_to: {
+                    type: Date
+                }
+            },
+
+            taken: {
+                type: Boolean,
+                default: false
+            }
+        }
+    ],
+
+    extra_information: {
+        //this will just contian things like the phone number or website
+        /*
+        I won't make these unique in case a hotel owner forgot the details to
+        their previous account and wants to make a new one
+        */
+        phone_number: {
+            type: String, // lmao
+            required: true,
+        },
+
+        address: {
+            type: String,
+            required: true
+        },
+
+        website: {
+            type: String,
+            required: false,
         }
     },
 

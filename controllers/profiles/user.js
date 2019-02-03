@@ -13,3 +13,5 @@ router.get("/:userame", (req, res) => {
 			return err_pages.page_404(req, res)
 	});
 });
+
+module.exports = router;

@@ -4,28 +4,36 @@ const express = require("express")
     , router  = express.Router( );
 
 router.get("/", (req, res) => {
-    return res.render("auth/login");
+    let vars = {};
+
+    if (req.query.not_logged_in)
+        vars["errors"] = [{msg: "You must be logged in to view that page"}];
+
+    return res.render("auth/login", vars);
 });
 
 router.post("/", (req, res) => {
     const username = req.body.username;
     const password = req.body.password2;
 
+    let redirect = "/";
+    if (req.query.next_page)
+        redirect = req.query.next_page;
 
     User.findOne({username: username}, (err, User) => {
 
         console.log(User);
 
-        if (!bcrypt.compareSync(password, User.password)) {
+        if (!User || !bcrypt.compareSync(password, User.password)) {
             console.log("here");
             return res.render("auth/login", {
-                errors: "Wrong username and/or password"
+                errors: [{msg: "Wrong username and/or password"}]
             });
         }
 
         req.session.current_user = User;
         req.session.save( );
-        res.redirect("/");
+        res.redirect(redirect);
     });
 });
 

@@ -35,3 +35,11 @@ main {
 .ui-datepicker {
 	font-size: 0.0001rem;
 }
+
+.icon-block {
+	cursor: pointer;
+}
+
+.hidden {
+	display: none;
+}
