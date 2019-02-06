@@ -43,3 +43,8 @@ main {
 .hidden {
 	display: none;
 }
+
+.error_message {
+	color: #ff0000;
+	font-size: 12px;
+}

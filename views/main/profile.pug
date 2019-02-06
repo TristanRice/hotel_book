@@ -24,28 +24,36 @@ block append main
                             div(class="input-field col s6")
                                 input(placeholder="Name", id="hotel_name", type="text", class="validate", required="true")
                                 label(for="hotel_name")
+                                    | Name 
+                                    span(class="error_message", id="hotel_name_error")
+
+                                label(for="hotel_name")
                                     | Name
 
                             div(class="input-field col s6")
-                                input(placeholder="Phone number", id="hotel_phone_numer", type="text", class="validate", required="true")
-                                label(for="hotel_phone_numer")
+                                input(placeholder="Phone number", id="hotel_phone_number", type="text", class="validate", required="true")
+                                label(for="hotel_phone_number")
                                     | Phone number
+                                    span(class="error_message", id="hotel_phone_number_error")
 
                         div(class="row")
                             div(class="input-field col s4")
                                 input(placeholder="Country", id="hotel_country", type="text", class="validate", required="true")
                                 label(for="hotel_country")
                                     | Country
+                                    span(class="error_message", id="hotel_country_error")
 
                             div(class="input-field col s4")
                                 input(placeholder="City", id="hotel_city", type="text", class="validate", required="true")
                                 label(for="hotel_city")
                                     | City
+                                    span(class="error_message", id="hotel_city_error")
 
                             div(class="input-field col s4")
                                 input(placeholder="Postcode", id="hotel_postcode", type="text", class="validate", required="true")
                                 label(for="hotel_postcode")
                                     | Postcode
+                                    span(class="error_message", id="hotel_postcode_error")
 
                         div(class="row")
                             div(class="input-field col s10")
