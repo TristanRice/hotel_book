@@ -11,7 +11,7 @@ $(function( ) {
 			type: "POST",
 			url: "/api/frontend/checkAvailable",
 			data: {
-				"value": value, "item": item
+				"value": value, "item": item, "model": "user"
 			},
 			dataType: "json",
 			success: (result) => {

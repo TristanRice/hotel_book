@@ -36,7 +36,7 @@ const HotelSchema = new Schema({
         {
             type: String, //path to the image
             required: false,
-            unique: true, //I don't want to have duplicate image names
+            unique: false, //I don't want to have duplicate image names
             extension: String
         }
     ],
@@ -73,13 +73,13 @@ const HotelSchema = new Schema({
         nr = ((ar*nr)+cr)/nr+1
         */
         average_star_rating: {
-            type: Integer,
-            default: 0;
+            type: Number,
+            default: 0,
             unique: false
         },
 
         number_of_raters: {
-            type: Integer,
+            type: Number,
             default: 0,
             unique: false
         }
@@ -95,12 +95,12 @@ const HotelSchema = new Schema({
     rooms: [
         {
             size: {
-                type: Integer,
+                type: Number,
                 default: 2
             },
 
             price: {
-                type: Integer,
+                type: Number,
                 required: true,
             },
 
@@ -151,7 +151,7 @@ const HotelSchema = new Schema({
         }
     },
 
-    metadata: default_json;
+    metadata: default_json
 });
 
 HotelSchema.methods.newstarrating = function(current_rating) {
